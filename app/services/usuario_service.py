@@ -1,5 +1,5 @@
-from models.usuario_model import Usuario
-from repositores.usuario_repository import UsuarioRepository
+from app.models.usuario_model import Usuario
+from app.repositores.usuario_repository import UsuarioRepository
 
 class UsuarioService:
     def __init__(self, repository: UsuarioRepository):
