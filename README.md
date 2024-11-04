@@ -27,3 +27,12 @@ Os dados precisam ser salvos no banco de dados.
 - Banco de dados MySQL
 - Containerização: Docker
 - Orquestração de conteiners: Docker Compose
+- Versionamento: Git
+
+### Obversação
+- Os testes devem verificar os dados informados.
+- As exceções devem ser tratadas e exibidas para o usuário sem parar a execução do programa.
+- Utilize branches para versionamento.
+- Segue o link do repositório com referência.
+
+<a> https://github.com/prof-carlos-colab/bd-III-python-91164 </a>
