@@ -13,7 +13,7 @@ def main():
     service = UsuarioService(repository)
 
     def listar_usuario():
-        print("\nlistando usuários cadastrados")
+        print("listando usuários cadastrados")
         lista_usuarios = service.listar_todos_usuarios()
         for usuario in lista_usuarios:
             print(
@@ -21,7 +21,7 @@ def main():
 
 
     while True:
-        print("código\t|\tdescriação")
+        print("\ncódigo\t|\tdescriação")
         print("1\t|\tcriar usuário")
         print("2\t|\tpesquisar um usuário")
         print("3\t|\tatualizar dados de um usuário")
@@ -41,37 +41,22 @@ def main():
                 service.criar_usuario(nome=nome, email=email, senha=senha)
             case 2:
                 listar_usuario()
-                email=input("informe o e-mail do usuário que deseja procurar: ")
-                if repository.pesquisar_usuario_por_email(email=email):
-                    print(f"{usuario.nome} - {usuario.email} - {usuario.senha}")
-                else:
-                    print("usuário não encontrado")
+                print("\n pesquisando usuário")
+                service.pesquisar_usuario_unico()
                 
             case 3:
                 listar_usuario()
-                nome= input("confirme o nome do usuário que deseja atualizar")     
-                email= input("confirme o email do usuário que deseja atualizar")     
-                senha= input("confirme o nome do usuário que deseja atualizar")
-                usuario = Usuario(nome=nome, email=email,senha=senha)
-
-                novo_nome = input("confirme o novo nome")
-                novo_email = input("confirme o novo email")
-                novo_senha = input("confirme o novo senha")
-                usuario = Usuario(nome=novo_nome, email=novo_email, senha=novo_senha)
-                repository.salvar_usuario(usuario=Usuario)
+                service.atualizar_usuario()
+               
             case 4:
                 listar_usuario()
-                nome= input("confirme o nome do usuário que deseja excluir")     
-                email= input("confirme o email do usuário que deseja excluir")     
-                senha= input("confirme o nome do usuário que deseja excluir")
-                usuario = Usuario(nome=nome, email=email,senha=senha)
-
-                repository.excluir_usuario(usuario=usuario)
+                print("\nexcluindo usuário:")
+                service.excluir_usuario()
 
             case 5:
                 listar_usuario()
             
-            case 6:
+            case 0:
                 break
             case _:
                 print("código incorreto, tente novamente")
