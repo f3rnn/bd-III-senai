@@ -27,7 +27,6 @@ Os dados precisam ser salvos no banco de dados.
 - Banco de dados MySQL
 - Containerização: Docker
 - Orquestração de conteiners: Docker Compose
-- Versionamento: Git
 
 ### Obversação
 - Os testes devem verificar os dados informados.
