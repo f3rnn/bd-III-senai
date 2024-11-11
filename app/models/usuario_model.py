@@ -14,8 +14,8 @@ class Usuario(Base):
 
     def __init__(self, nome: str, email: str, senha: str):
         self.nome = self._verificar_nome(nome)
-        self.email = email
-        self.senha = senha
+        self.email = self._verficar_email(email)
+        self.senha = self._verficar_senha(senha)
     
     def _verificar_nome(self, valor):
         try:
@@ -54,4 +54,24 @@ class Usuario(Base):
         if not valor.strip():
             raise TypeError("o email não pode estar vazio")
         return valor
+    
+    def _verficar_senha(self, valor):
+        try:
+            self._verificar_senha_invalida(valor)
+            self._verificar_senha_vazia(valor)
+        except TypeError as e:
+            raise TypeError(f"erro: {e}")
+        self.senha = valor
+        return self.senha
+
+    def _verificar_senha_invalida(self,valor):
+        if not isinstance(valor, str):
+            raise TypeError("a senha deve ser um texto")
+        return valor
+    
+    def _verificar_senha_vazia(self,valor):
+        if not valor.strip():
+            raise TypeError("a senha não pode estar vazia")
+        return valor
+    
 Base.metadata.create_all(bind=db)
